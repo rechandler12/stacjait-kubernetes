@@ -10,8 +10,8 @@ Repozytorium zawiera materiały z warsztatu [Stacja.IT](https://stacja.it/).
 * 2 GB wolnego RAM
 * 20 GB wolnego dysku
 
-### Instalacja Dockera
-Należy mieć zainstalowanego Dockera, zgodnie z instrukcją na oficjalnej stronie.
+### Instalacja Docker Desktop
+Należy mieć zainstalowanego Dockera, najprostszym sposobem będzie zainstalowanie Docker Desktop, zgodnie z instrukcją na oficjalnej stronie.
 
 #### Windows
 https://docs.docker.com/desktop/install/windows-install/
@@ -21,6 +21,9 @@ https://docs.docker.com/desktop/install/linux-install/
 
 #### MacOS
 https://docs.docker.com/desktop/install/mac-install/
+
+### Instalacja Docker Engine
+Alternatywną metodą jest zainstalowanie bezpośrednio Docker Engine. Znowu należy posłużyć się oficjalną dokumentacją: https://docs.docker.com/engine/install/
 
 ### Test
 Uruchomienie testowej aplikacji na Dockerze. W konsoli należy wykonać:
