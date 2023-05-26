@@ -52,19 +52,9 @@ minikube start --driver=docker --nodes 3 --cni calico
 🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
 ```
 
-5. Wykonaj następujące komendy
-
-```
-minikube addons enable volumesnapshots
-minikube addons enable csi-hostpath-driver
-minikube addons disable storage-provisioner
-minikube addons disable default-storageclass
-kubectl patch storageclass csi-hostpath-sc -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
-```
-
-6. Zainstaluj narzędzie `kubectl` zgodnie z [dokumentacją](https://kubernetes.io/docs/tasks/tools/)
-7. Wykonaj polecenie `kubectl cluster-info` oraz `kubectl get pods -A`
-8. Rezultat powinien być następujący (oczywiście adres IP może się różnić):
+4. Zainstaluj narzędzie `kubectl` zgodnie z [dokumentacją](https://kubernetes.io/docs/tasks/tools/)
+5. Wykonaj polecenie `kubectl cluster-info` oraz `kubectl get pods -A`
+6. Rezultat powinien być następujący (oczywiście adres IP może się różnić):
 
 ```
 Kubernetes control plane is running at https://192.168.49.2:8443
@@ -82,6 +72,16 @@ kube-system   kube-controller-manager-minikube   1/1     Running   0            
 kube-system   kube-proxy-n6t5s                   1/1     Running   0               8m47s
 kube-system   kube-scheduler-minikube            1/1     Running   0               9m
 kube-system   storage-provisioner                1/1     Running   1 (8m25s ago)   8m59s
+```
+
+7. Wykonaj następujące komendy
+
+```
+minikube addons enable volumesnapshots
+minikube addons enable csi-hostpath-driver
+minikube addons disable storage-provisioner
+minikube addons disable default-storageclass
+kubectl patch storageclass csi-hostpath-sc -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 ```
 
 ## Zadanie 2: Instalacja dashboardu na klastrze
