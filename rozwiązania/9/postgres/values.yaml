@@ -1,0 +1,9 @@
+global:
+  postgresql:
+    auth:
+      database: hyperon
+
+primary:
+  resources:
+    requests:
+      cpu: 10m

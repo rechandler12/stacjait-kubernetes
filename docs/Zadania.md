@@ -52,9 +52,19 @@ minikube start --driver=docker --nodes 3 --cni calico
 🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
 ```
 
-5. Zainstaluj narzędzie `kubectl` zgodnie z [dokumentacją](https://kubernetes.io/docs/tasks/tools/)
-6. Wykonaj polecenie `kubectl cluster-info` oraz `kubectl get pods -A`
-7. Rezultat powinien być następujący (oczywiście adres IP może się różnić):
+5. Wykonaj następujące komendy
+
+```
+minikube addons enable volumesnapshots
+minikube addons enable csi-hostpath-driver
+minikube addons disable storage-provisioner
+minikube addons disable default-storageclass
+kubectl patch storageclass csi-hostpath-sc -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+```
+
+6. Zainstaluj narzędzie `kubectl` zgodnie z [dokumentacją](https://kubernetes.io/docs/tasks/tools/)
+7. Wykonaj polecenie `kubectl cluster-info` oraz `kubectl get pods -A`
+8. Rezultat powinien być następujący (oczywiście adres IP może się różnić):
 
 ```
 Kubernetes control plane is running at https://192.168.49.2:8443
@@ -267,7 +277,7 @@ Oprócz Deploymentów, Service to drugi najpotrzebniejszy obiekt w K8s.
 4. Sprawdź za pomocą `kubectl describe service` czy service łączy się do podów
 5. Za pomocą komendy `kubectl port-forward` połącz się do service i sprawdź rezultat w przeglądarce
 
-## Zadanie 7: Zmiana typu service
+## Zadanie 8: Zmiana typu service
 
 ### Wprowadzenie
 Najczęściej używamy Service z typem ClusterIP, jednak czasami jest potrzeba użycia innego typu.
@@ -278,3 +288,16 @@ Najczęściej używamy Service z typem ClusterIP, jednak czasami jest potrzeba u
 3. Sprawdź na jakim porcie wystawił się service
 4. Sprawdź IP dowolnego noda
 5. Sprawdź w przeglądarce czy service odpowiada pod adresem: http://ip_node:port_service/
+
+## Zadanie 9: Projekt końcowy
+
+### Wprowadzenie
+W ramach projektu końcowego zainstaluj postgresa i aplikację Hyperon, a następnie skonfiguruj pod to Ingressa.
+
+### Kroki
+1. Zainstaluj helma zgodnie z [oficjalną dokumentacją](https://helm.sh/docs/intro/install/)
+2. Zainstaluj postgresa w namespace Hyperon zgodnie z [dokumentacją](https://github.com/bitnami/charts/tree/main/bitnami/postgresql). Ustaw `global.postgresql.auth.database: hyperon`
+3. Zainstaluj Hyperona, plik yaml znajduje się w rozwiązaniach. Spróbuj najpierw zrozumieć wszystkie linijki tego pliku
+4. Włącz obsługę Ingressa na minikube komendą `minikube addons enable ingress`
+5. Sprawdź adres IP minikube komendą `minikube ip` i dodaj wpis do /etc/hosts z domeną wpisaną w obiekcie Ingress wskazującą na adres IP minikube
+6. Wejdź na wcześniej znalezioną domenę z dopiskiem `/hyperon/app`

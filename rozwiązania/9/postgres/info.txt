@@ -1,0 +1,14 @@
+## Pull
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
+helm pull bitnami/postgresql --version 12.1.9
+helm pull bitnami/postgresql --version 12.1.9 --untar
+
+## Install
+helm install -f ./values.yaml postgres ./postgresql -n hyperon --create-namespace
+
+## Upgrade
+helm upgrade -f ./values.yaml postgres ./postgresql -n hyperon
+
+## Uninstall
+helm uninstall postgres -n hyperon
