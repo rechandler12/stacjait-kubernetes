@@ -64,14 +64,20 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
 
 ```
-NAMESPACE     NAME                               READY   STATUS    RESTARTS        AGE
-kube-system   coredns-787d4945fb-2w6fs           1/1     Running   0               8m47s
-kube-system   etcd-minikube                      1/1     Running   0               9m
-kube-system   kube-apiserver-minikube            1/1     Running   0               9m
-kube-system   kube-controller-manager-minikube   1/1     Running   0               9m
-kube-system   kube-proxy-n6t5s                   1/1     Running   0               8m47s
-kube-system   kube-scheduler-minikube            1/1     Running   0               9m
-kube-system   storage-provisioner                1/1     Running   1 (8m25s ago)   8m59s
+NAMESPACE     NAME                                      READY   STATUS     RESTARTS      AGE
+kube-system   calico-kube-controllers-7bdbfc669-zbc9c   1/1     Running    1 (16s ago)   30s
+kube-system   calico-node-5fplz                         0/1     Init:0/3   0             5s
+kube-system   calico-node-slfzl                         1/1     Running    0             25s
+kube-system   calico-node-wd672                         1/1     Running    0             30s
+kube-system   coredns-787d4945fb-2297g                  1/1     Running    1 (16s ago)   30s
+kube-system   etcd-minikube                             1/1     Running    0             42s
+kube-system   kube-apiserver-minikube                   1/1     Running    0             43s
+kube-system   kube-controller-manager-minikube          1/1     Running    0             45s
+kube-system   kube-proxy-46ks6                          1/1     Running    0             25s
+kube-system   kube-proxy-nklrh                          1/1     Running    0             30s
+kube-system   kube-proxy-zkjmw                          1/1     Running    0             5s
+kube-system   kube-scheduler-minikube                   1/1     Running    0             45s
+kube-system   storage-provisioner                       1/1     Running    1 (9s ago)    42s
 ```
 
 7. Wykonaj następujące komendy
